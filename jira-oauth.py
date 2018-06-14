@@ -1,6 +1,6 @@
 import requests
 from oauthlib.oauth1 import SIGNATURE_RSA
-from 	 import OAuth1Session
+from requests_oauthlib import OAuth1Session
 from jira.client import JIRA
 
 def read(file_path):
@@ -28,8 +28,9 @@ oauth = OAuth1Session(CONSUMER_KEY, signature_type='auth_header',
                       signature_method=SIGNATURE_RSA, rsa_key=RSA_KEY)
 request_token = oauth.fetch_request_token(REQUEST_TOKEN_URL)
 
+
 print("STEP 1: GET REQUEST TOKEN")
-print("  `token={}".format(request_token['oauth_token']))
+print("  oauth_token={}".format(request_token['oauth_token']))
 print("  oauth_token_secret={}".format(request_token['oauth_token_secret']))
 print("\n")
 
